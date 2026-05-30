@@ -1,0 +1,36 @@
+{
+  "name": "monad-hotel-dapp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run test/hash.test.ts test/qr.test.ts",
+    "lint": "eslint .",
+    "compile:contracts": "hardhat compile",
+    "test:contracts": "hardhat test test/Hotel.test.ts --network hardhat",
+    "deploy:monad-testnet": "hardhat run scripts/deploy.ts --network monadTestnet"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "lucide-react": "^0.468.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.8.0",
+    "viem": "^2.30.0",
+    "vite": "^7.0.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.6",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "hardhat": "^3.4.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.0.0"
+  }
+}
