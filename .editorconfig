@@ -1,0 +1,13 @@
+# 这个文件告诉编辑器：本项目统一使用 UTF-8 编码。
+root = true
+
+# 这里匹配项目里的所有文件。
+[*]
+# charset 表示文件编码；utf-8 可以避免中文注释变乱码。
+charset = utf-8
+# end_of_line 表示换行格式；lf 是前端项目常用格式。
+end_of_line = lf
+# insert_final_newline 表示文件结尾保留一个换行。
+insert_final_newline = true
+# trim_trailing_whitespace 表示保存时去掉行尾多余空格。
+trim_trailing_whitespace = true

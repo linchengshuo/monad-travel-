@@ -1,0 +1,525 @@
+:root { /* 定义全局变量，方便统一页面颜色。 */
+  color: #17211b; /* 设置默认文字颜色。 */
+  background: #f4f6f1; /* 设置页面背景颜色。 */
+  font-family: Inter, "Microsoft YaHei", system-ui, sans-serif; /* 设置字体。 */
+  font-synthesis: none; /* 禁止浏览器伪造字体。 */
+  text-rendering: optimizeLegibility; /* 优化文字显示。 */
+} /* 全局变量结束。 */
+
+* { /* 选中所有元素。 */
+  box-sizing: border-box; /* 让宽度计算包含边框和内边距。 */
+} /* 全局盒模型结束。 */
+
+body { /* 设置页面 body。 */
+  margin: 0; /* 去掉浏览器默认外边距。 */
+  min-width: 320px; /* 设置最小宽度。 */
+} /* body 设置结束。 */
+
+button, input { /* 同时设置按钮和输入框。 */
+  font: inherit; /* 使用页面统一字体。 */
+} /* 按钮和输入框设置结束。 */
+
+button { /* 设置按钮。 */
+  cursor: pointer; /* 鼠标悬停显示手形。 */
+} /* 按钮设置结束。 */
+
+img { /* 设置图片。 */
+  display: block; /* 去掉图片底部空隙。 */
+  max-width: 100%; /* 图片不超过容器宽度。 */
+} /* 图片设置结束。 */
+
+.app-shell { /* 页面外壳。 */
+  min-height: 100vh; /* 页面至少占满一屏。 */
+  padding: 22px; /* 页面四周留白。 */
+} /* 页面外壳结束。 */
+
+.topbar { /* 顶部栏。 */
+  align-items: center; /* 垂直居中。 */
+  display: flex; /* 使用弹性布局。 */
+  gap: 16px; /* 元素之间留间距。 */
+  justify-content: space-between; /* 左右分散。 */
+  margin: 0 auto 18px; /* 居中并留底部间距。 */
+  max-width: 1180px; /* 限制最大宽度。 */
+} /* 顶部栏结束。 */
+
+.brand-button { /* 品牌按钮。 */
+  align-items: center; /* 图标文字居中。 */
+  background: transparent; /* 去掉背景。 */
+  border: 0; /* 去掉边框。 */
+  color: #17211b; /* 设置文字颜色。 */
+  display: inline-flex; /* 横向排列。 */
+  font-weight: 800; /* 加粗品牌文字。 */
+  gap: 10px; /* 图标和文字间距。 */
+  padding: 0; /* 去掉内边距。 */
+} /* 品牌按钮结束。 */
+
+.topbar-actions { /* 顶部操作区。 */
+  display: flex; /* 横向排列。 */
+  flex-wrap: wrap; /* 小屏幕允许换行。 */
+  gap: 10px; /* 按钮间距。 */
+} /* 顶部操作区结束。 */
+
+.primary-button, .ghost-button, .back-button, .text-button { /* 设置通用按钮。 */
+  align-items: center; /* 内容垂直居中。 */
+  border-radius: 7px; /* 设置圆角。 */
+  display: inline-flex; /* 横向排列图标和文字。 */
+  gap: 8px; /* 图标和文字间距。 */
+  justify-content: center; /* 内容居中。 */
+  min-height: 42px; /* 设置按钮高度。 */
+  padding: 0 16px; /* 设置左右留白。 */
+} /* 通用按钮结束。 */
+
+.primary-button { /* 主要按钮。 */
+  background: #1d6b4b; /* 设置绿色背景。 */
+  border: 1px solid #1d6b4b; /* 设置绿色边框。 */
+  color: white; /* 设置白色文字。 */
+} /* 主要按钮结束。 */
+
+.ghost-button, .back-button, .text-button { /* 次要按钮。 */
+  background: white; /* 设置白色背景。 */
+  border: 1px solid #cbd7cf; /* 设置浅色边框。 */
+  color: #17211b; /* 设置深色文字。 */
+} /* 次要按钮结束。 */
+
+.text-button { /* 文本按钮。 */
+  border-color: transparent; /* 隐藏边框。 */
+  padding-left: 0; /* 左侧不留白。 */
+} /* 文本按钮结束。 */
+
+.wide { /* 宽按钮。 */
+  width: 100%; /* 占满父容器。 */
+} /* 宽按钮结束。 */
+
+.notice, .back-button, .page-section, .entry-grid { /* 设置主要内容最大宽度。 */
+  margin-left: auto; /* 左侧自动居中。 */
+  margin-right: auto; /* 右侧自动居中。 */
+  max-width: 1180px; /* 限制最大宽度。 */
+} /* 主要内容宽度结束。 */
+
+.notice { /* 顶部提示条。 */
+  background: #ffffff; /* 设置白色背景。 */
+  border: 1px solid #dbe4dd; /* 设置边框。 */
+  border-left: 4px solid #1d6b4b; /* 设置左侧强调线。 */
+  border-radius: 8px; /* 设置圆角。 */
+  color: #526056; /* 设置文字颜色。 */
+  line-height: 1.6; /* 设置行高。 */
+  margin-bottom: 16px; /* 底部留白。 */
+  padding: 12px 14px; /* 设置内边距。 */
+} /* 顶部提示条结束。 */
+
+.back-button { /* 返回按钮。 */
+  margin-bottom: 16px; /* 底部留白。 */
+} /* 返回按钮结束。 */
+
+.entry-grid { /* 身份选择网格。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 22px; /* 卡片间距。 */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 两列布局。 */
+  min-height: calc(100vh - 160px); /* 让入口区域接近一屏高度。 */
+} /* 身份选择网格结束。 */
+
+.entry-card { /* 身份入口卡片。 */
+  align-items: flex-start; /* 内容靠上。 */
+  border: 1px solid rgba(23, 33, 27, 0.12); /* 设置边框。 */
+  border-radius: 8px; /* 设置圆角。 */
+  color: #17211b; /* 设置文字颜色。 */
+  display: flex; /* 使用弹性布局。 */
+  flex-direction: column; /* 垂直排列。 */
+  justify-content: flex-end; /* 内容靠下。 */
+  min-height: 420px; /* 设置入口卡片高度。 */
+  overflow: hidden; /* 隐藏溢出内容。 */
+  padding: 34px; /* 设置内边距。 */
+  position: relative; /* 方便做背景层。 */
+  text-align: left; /* 文字左对齐。 */
+} /* 身份入口卡片结束。 */
+
+.entry-card::before { /* 入口卡片背景层。 */
+  content: ""; /* 创建伪元素。 */
+  inset: 0; /* 铺满卡片。 */
+  opacity: 0.28; /* 设置透明度。 */
+  position: absolute; /* 绝对定位。 */
+} /* 背景层结束。 */
+
+.entry-card > * { /* 入口卡片直接子元素。 */
+  position: relative; /* 让文字浮在背景层上。 */
+  z-index: 1; /* 提高层级。 */
+} /* 子元素层级结束。 */
+
+.user-card { /* 用户入口卡片。 */
+  background: #e7f0e3; /* 设置用户卡片背景色。 */
+} /* 用户入口卡片结束。 */
+
+.user-card::before { /* 用户卡片背景图。 */
+  background: url("https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1400&q=80") center/cover; /* 设置酒店图片背景。 */
+} /* 用户背景图结束。 */
+
+.merchant-card { /* 商家入口卡片。 */
+  background: #e7edf1; /* 设置商家卡片背景色。 */
+} /* 商家入口卡片结束。 */
+
+.merchant-card::before { /* 商家卡片背景图。 */
+  background: url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80") center/cover; /* 设置办公场景背景。 */
+} /* 商家背景图结束。 */
+
+.entry-card span { /* 入口卡片标题。 */
+  font-size: clamp(38px, 6vw, 70px); /* 设置响应式大标题。 */
+  font-weight: 850; /* 设置粗体。 */
+  letter-spacing: 0; /* 保持正常字间距。 */
+  line-height: 0.98; /* 设置紧凑行高。 */
+  margin-top: 18px; /* 顶部留白。 */
+} /* 入口卡片标题结束。 */
+
+.entry-card p { /* 入口卡片说明。 */
+  color: #39473e; /* 设置说明文字颜色。 */
+  font-size: 18px; /* 设置字号。 */
+  line-height: 1.7; /* 设置行高。 */
+  max-width: 420px; /* 限制宽度。 */
+} /* 入口卡片说明结束。 */
+
+.page-section { /* 页面区块。 */
+  padding-bottom: 48px; /* 底部留白。 */
+} /* 页面区块结束。 */
+
+.narrow-section { /* 窄页面区块。 */
+  max-width: 860px; /* 限制最大宽度。 */
+} /* 窄页面区块结束。 */
+
+.section-title { /* 区块标题。 */
+  margin-bottom: 18px; /* 标题底部留白。 */
+} /* 区块标题结束。 */
+
+.section-title h1, .section-title h2 { /* 区块标题文字。 */
+  font-size: clamp(30px, 5vw, 54px); /* 设置响应式标题。 */
+  letter-spacing: 0; /* 保持正常字间距。 */
+  line-height: 1.02; /* 设置行高。 */
+  margin: 0 0 10px; /* 设置外边距。 */
+} /* 区块标题文字结束。 */
+
+.section-title p, .helper-text, .empty-state { /* 说明文字。 */
+  color: #637066; /* 设置弱化文字颜色。 */
+  line-height: 1.7; /* 设置行高。 */
+} /* 说明文字结束。 */
+
+.hotel-grid { /* 酒店卡片网格。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 18px; /* 卡片间距。 */
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* 四列酒店。 */
+} /* 酒店卡片网格结束。 */
+
+.hotel-card, .room-tile, .workflow-panel, .order-card, .merchant-room { /* 卡片和面板。 */
+  background: #ffffff; /* 设置白色背景。 */
+  border: 1px solid #dbe4dd; /* 设置边框。 */
+  border-radius: 8px; /* 设置圆角。 */
+  box-shadow: 0 14px 42px rgba(34, 53, 42, 0.07); /* 设置轻微阴影。 */
+} /* 卡片和面板结束。 */
+
+.hotel-card { /* 酒店卡片。 */
+  color: #17211b; /* 设置文字颜色。 */
+  display: flex; /* 使用弹性布局。 */
+  flex-direction: column; /* 垂直排列。 */
+  gap: 9px; /* 内容间距。 */
+  padding: 10px; /* 内边距。 */
+  text-align: left; /* 左对齐。 */
+} /* 酒店卡片结束。 */
+
+.hotel-card img { /* 酒店图片。 */
+  aspect-ratio: 1.2; /* 固定图片比例。 */
+  border-radius: 7px; /* 图片圆角。 */
+  object-fit: cover; /* 图片裁切填满。 */
+} /* 酒店图片结束。 */
+
+.hotel-card strong { /* 酒店名称。 */
+  font-size: 18px; /* 设置字号。 */
+} /* 酒店名称结束。 */
+
+.hotel-card p, .hotel-card span, .hotel-card small { /* 酒店卡片辅助文字。 */
+  color: #5f6b62; /* 设置辅助文字颜色。 */
+  line-height: 1.55; /* 设置行高。 */
+  margin: 0; /* 去掉默认外边距。 */
+} /* 酒店辅助文字结束。 */
+
+.hotel-hero, .room-detail { /* 酒店和房型详情头部。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 24px; /* 内容间距。 */
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr); /* 左图右文布局。 */
+  margin-bottom: 28px; /* 底部留白。 */
+} /* 详情头部结束。 */
+
+.hotel-hero img, .room-detail img { /* 详情头图。 */
+  aspect-ratio: 1.5; /* 固定图片比例。 */
+  border-radius: 8px; /* 图片圆角。 */
+  object-fit: cover; /* 图片裁切填满。 */
+  width: 100%; /* 占满宽度。 */
+} /* 详情头图结束。 */
+
+.hotel-hero h1, .room-detail h1 { /* 详情标题。 */
+  font-size: clamp(34px, 5vw, 62px); /* 设置响应式标题。 */
+  letter-spacing: 0; /* 保持正常字间距。 */
+  line-height: 1; /* 设置行高。 */
+  margin: 0 0 16px; /* 设置外边距。 */
+} /* 详情标题结束。 */
+
+.contract-line { /* 合约地址行。 */
+  color: #526056; /* 设置文字颜色。 */
+  overflow-wrap: anywhere; /* 长地址允许换行。 */
+} /* 合约地址行结束。 */
+
+.room-grid { /* 房型网格。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 16px; /* 卡片间距。 */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 三列房型。 */
+} /* 房型网格结束。 */
+
+.room-tile { /* 房型卡片。 */
+  color: #17211b; /* 设置文字颜色。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 10px; /* 内容间距。 */
+  padding: 10px; /* 内边距。 */
+  text-align: left; /* 左对齐。 */
+} /* 房型卡片结束。 */
+
+.room-tile img { /* 房型图片。 */
+  aspect-ratio: 1.45; /* 固定比例。 */
+  border-radius: 7px; /* 图片圆角。 */
+  object-fit: cover; /* 图片裁切。 */
+} /* 房型图片结束。 */
+
+.fact-grid { /* 房型事实网格。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 10px; /* 项目间距。 */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 两列布局。 */
+  margin-top: 18px; /* 顶部留白。 */
+} /* 房型事实网格结束。 */
+
+.fact-grid span { /* 房型事实项。 */
+  background: #ffffff; /* 设置白色背景。 */
+  border: 1px solid #dbe4dd; /* 设置边框。 */
+  border-radius: 7px; /* 设置圆角。 */
+  padding: 12px; /* 设置内边距。 */
+} /* 房型事实项结束。 */
+
+.booking-layout, .dashboard-grid { /* 预订和后台布局。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 18px; /* 面板间距。 */
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr); /* 双栏布局。 */
+} /* 预订和后台布局结束。 */
+
+.audit-layout { /* 审核页布局。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 18px; /* 面板之间留间距。 */
+  grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1fr); /* 左侧登录，右侧申请列表。 */
+} /* 审核页布局结束。 */
+
+.audit-card { /* 审核申请卡片。 */
+  background: #ffffff; /* 设置白色背景。 */
+  border: 1px solid #dbe4dd; /* 设置浅色边框。 */
+  border-radius: 8px; /* 设置圆角。 */
+  margin-top: 12px; /* 顶部留白。 */
+  padding: 14px; /* 设置内边距。 */
+} /* 审核申请卡片结束。 */
+
+.audit-card p { /* 审核卡片段落。 */
+  color: #526056; /* 设置辅助文字颜色。 */
+  line-height: 1.55; /* 设置行高。 */
+  margin: 8px 0 0; /* 设置外边距。 */
+  overflow-wrap: anywhere; /* 长钱包地址允许换行。 */
+} /* 审核卡片段落结束。 */
+
+.audit-actions { /* 审核按钮区。 */
+  display: flex; /* 横向排列。 */
+  flex-wrap: wrap; /* 小屏幕允许换行。 */
+  gap: 10px; /* 按钮间距。 */
+  margin-top: 14px; /* 顶部留白。 */
+} /* 审核按钮区结束。 */
+
+.workflow-panel { /* 工作面板。 */
+  padding: 22px; /* 设置内边距。 */
+} /* 工作面板结束。 */
+
+.workflow-panel h2 { /* 工作面板标题。 */
+  align-items: center; /* 图标文字居中。 */
+  display: flex; /* 横向排列。 */
+  gap: 8px; /* 图标文字间距。 */
+  margin-top: 0; /* 去掉顶部外边距。 */
+} /* 工作面板标题结束。 */
+
+.form-grid { /* 表单网格。 */
+  display: grid; /* 使用网格布局。 */
+  gap: 14px; /* 输入项间距。 */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 两列布局。 */
+} /* 表单网格结束。 */
+
+label { /* 表单标签。 */
+  color: #526056; /* 设置标签文字颜色。 */
+  display: grid; /* 标签和输入框上下排列。 */
+  font-size: 13px; /* 标签字号。 */
+  gap: 7px; /* 标签和输入框间距。 */
+} /* 表单标签结束。 */
+
+.full-field { /* 满宽表单项。 */
+  grid-column: 1 / -1; /* 占满整行。 */
+} /* 满宽表单项结束。 */
+
+input { /* 输入框。 */
+  background: #ffffff; /* 设置白色背景。 */
+  border: 1px solid #ccd8cf; /* 设置边框。 */
+  border-radius: 6px; /* 设置圆角。 */
+  color: #17211b; /* 设置文字颜色。 */
+  min-height: 42px; /* 设置高度。 */
+  padding: 0 12px; /* 设置左右内边距。 */
+} /* 输入框结束。 */
+
+.upload-box { /* 上传入口。 */
+  align-items: center; /* 图标文字居中。 */
+  background: #f6f8f5; /* 设置浅色背景。 */
+  border: 1px dashed #9db2a5; /* 设置虚线边框。 */
+  border-radius: 8px; /* 设置圆角。 */
+  color: #314238; /* 设置文字颜色。 */
+  display: flex; /* 横向排列。 */
+  gap: 10px; /* 图标文字间距。 */
+  justify-content: center; /* 内容居中。 */
+  margin: 16px 0; /* 上下留白。 */
+  min-height: 74px; /* 设置高度。 */
+  width: 100%; /* 占满宽度。 */
+} /* 上传入口结束。 */
+
+.order-card, .merchant-room { /* 订单和商家房型行。 */
+  align-items: center; /* 内容居中。 */
+  display: flex; /* 横向排列。 */
+  gap: 14px; /* 内容间距。 */
+  justify-content: space-between; /* 左右分布。 */
+  margin-top: 12px; /* 顶部留白。 */
+  padding: 14px; /* 内边距。 */
+} /* 订单和房型行结束。 */
+
+.order-card p, .merchant-room p { /* 行内段落。 */
+  color: #637066; /* 设置辅助文字颜色。 */
+  margin: 6px 0 0; /* 设置外边距。 */
+  overflow-wrap: anywhere; /* 长文本允许换行。 */
+} /* 行内段落结束。 */
+
+.qr-payload { /* 二维码原始内容预览。 */
+  background: #f5f7f4; /* 设置浅色背景，和订单卡片区分。 */
+  border: 1px solid #dbe4dd; /* 设置边框。 */
+  border-radius: 6px; /* 设置轻微圆角。 */
+  color: #324139; /* 设置深色文字。 */
+  font-size: 12px; /* 设置较小字号，避免长 JSON 挤爆卡片。 */
+  line-height: 1.5; /* 设置行高，方便阅读。 */
+  margin: 10px 0 0; /* 设置顶部间距。 */
+  max-width: 100%; /* 限制最大宽度不超过父容器。 */
+  overflow: auto; /* 内容太长时允许滚动。 */
+  padding: 10px; /* 设置内边距。 */
+  white-space: pre-wrap; /* 保留 JSON 换行并允许自动换行。 */
+} /* 二维码内容预览结束。 */
+
+.qr-box, .qr-image { /* 二维码容器和图片。 */
+  background: #ffffff; /* 设置白色背景，保证扫码软件能识别黑白块。 */
+  border: 1px solid #dbe4dd; /* 设置浅色边框。 */
+  border-radius: 6px; /* 设置轻微圆角。 */
+  display: block; /* 让二维码独占一行。 */
+  margin-top: 12px; /* 和上方订单文字保持间距。 */
+  max-width: 220px; /* 限制二维码最大宽度，避免撑开订单卡片。 */
+  padding: 10px; /* 给二维码留白，避免边缘贴住边框。 */
+  width: 100%; /* 小屏幕时允许自适应缩小。 */
+} /* 二维码容器和图片结束。 */
+
+.qr-loading { /* 二维码加载状态。 */
+  color: #637066; /* 使用辅助文字颜色。 */
+  font-size: 13px; /* 设置较小字号。 */
+  text-align: center; /* 文本居中。 */
+} /* 二维码加载状态结束。 */
+
+.order-inbox { /* 商家订单收件箱。 */
+  grid-column: 1 / -1; /* 在仪表盘网格里占满整行。 */
+} /* 商家订单收件箱结束。 */
+
+.merchant-room img { /* 商家房型图片。 */
+  aspect-ratio: 1.25; /* 固定比例。 */
+  border-radius: 6px; /* 图片圆角。 */
+  object-fit: cover; /* 图片裁切。 */
+  width: 96px; /* 设置宽度。 */
+} /* 商家房型图片结束。 */
+
+.room-image-preview { /* 房型表单里的图片预览。 */
+  aspect-ratio: 16 / 9; /* 固定预览比例，避免图片加载后撑乱表单。 */
+  border: 1px solid #d8e1da; /* 设置浅色边框，方便看清图片边界。 */
+  border-radius: 6px; /* 设置轻微圆角，和其他界面元素一致。 */
+  display: block; /* 让图片独占一行显示。 */
+  margin: 14px 0; /* 设置上下间距，避免贴住输入框。 */
+  max-height: 260px; /* 限制最大高度，避免大图占满页面。 */
+  object-fit: cover; /* 按比例裁切图片，让预览保持整洁。 */
+  width: 100%; /* 宽度占满表单面板。 */
+} /* 房型图片预览结束。 */
+
+.upload-status { /* 图片上传状态文本。 */
+  color: #1b6b3a; /* 使用绿色表示图片已经上传成功。 */
+  font-weight: 700; /* 加粗状态文本，方便商家确认。 */
+  margin: -4px 0 12px; /* 调整和图片预览、按钮之间的间距。 */
+} /* 图片上传状态文本结束。 */
+
+.upload-status-error { /* 图片上传失败状态。 */
+  color: #b42318; /* 使用红色表示上传失败。 */
+} /* 图片上传失败状态结束。 */
+
+.upload-error { /* 图片上传失败原因。 */
+  color: #b42318; /* 使用红色显示错误原因。 */
+  font-size: 13px; /* 设置较小字号，避免错误文本喧宾夺主。 */
+  line-height: 1.5; /* 设置行高，方便阅读多行错误。 */
+  margin: -6px 0 12px; /* 调整错误文本和按钮之间的间距。 */
+  overflow-wrap: anywhere; /* 长错误文本允许换行。 */
+} /* 图片上传失败原因结束。 */
+
+@media (max-width: 920px) { /* 平板和手机布局开始。 */
+  .entry-grid, .hotel-grid, .room-grid, .hotel-hero, .room-detail, .booking-layout, .dashboard-grid, .audit-layout { /* 主要网格。 */
+    grid-template-columns: 1fr; /* 改成单列。 */
+  } /* 主要网格结束。 */
+  .entry-card { /* 小屏入口卡片。 */
+    min-height: 300px; /* 降低卡片高度。 */
+  } /* 小屏入口卡片结束。 */
+} /* 平板和手机布局结束。 */
+
+@media (max-width: 620px) { /* 手机布局开始。 */
+  .app-shell { /* 手机页面外壳。 */
+    padding: 14px; /* 减少留白。 */
+  } /* 手机页面外壳结束。 */
+  .topbar { /* 手机顶部栏。 */
+    align-items: stretch; /* 拉满宽度。 */
+    flex-direction: column; /* 垂直排列。 */
+  } /* 手机顶部栏结束。 */
+  .form-grid, .fact-grid { /* 手机表单和事实网格。 */
+    grid-template-columns: 1fr; /* 改成单列。 */
+  } /* 手机表单和事实网格结束。 */
+  .order-card, .merchant-room { /* 手机订单和房型行。 */
+    align-items: stretch; /* 内容拉伸。 */
+    flex-direction: column; /* 垂直排列。 */
+  } /* 手机订单和房型行结束。 */
+} /* 手机布局结束。 */
+
+select, textarea { /* 同时设置下拉框和多行文本框，让它们和普通输入框保持一致。 */
+  background: #ffffff; /* 设置白色背景。 */
+  border: 1px solid #ccd8cf; /* 设置浅色边框。 */
+  border-radius: 6px; /* 设置轻微圆角。 */
+  color: #17211b; /* 设置深色文字。 */
+  font: inherit; /* 使用页面统一字体。 */
+  min-height: 42px; /* 设置最小高度。 */
+  padding: 0 12px; /* 设置左右留白。 */
+} /* 下拉框和多行文本框样式结束。 */
+
+textarea { /* 单独设置多行文本框。 */
+  line-height: 1.6; /* 设置行高，方便阅读长详情。 */
+  min-height: 110px; /* 给详情输入框更大的高度。 */
+  padding: 10px 12px; /* 设置上下左右留白。 */
+  resize: vertical; /* 允许用户垂直拉高输入框。 */
+} /* 多行文本框样式结束。 */
+
+button:disabled { /* 设置禁用状态按钮。 */
+  cursor: not-allowed; /* 鼠标显示不可点击。 */
+  opacity: 0.62; /* 降低透明度，让用户知道按钮暂时不能点。 */
+} /* 禁用按钮样式结束。 */
+.hidden-file-input { /* 隐藏原生文件输入框，只保留我们设计好的上传入口。 */
+  height: 1px; /* 把输入框高度压到最小。 */
+  opacity: 0; /* 让输入框不可见。 */
+  pointer-events: none; /* 避免隐藏输入框抢鼠标事件。 */
+  position: absolute; /* 从正常布局中拿出来，避免撑开上传按钮。 */
+  width: 1px; /* 把输入框宽度压到最小。 */
+} /* 隐藏文件输入框样式结束。 */
